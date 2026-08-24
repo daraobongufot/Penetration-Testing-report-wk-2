@@ -1,144 +1,111 @@
-# 🛡️ Week 2 Penetration Testing Project
 
-## 🔎 Reconnaissance & Footprinting
+# 🛡️ PENETRATION TESTING REPORT
 
-### 📌 Project Overview
+### Footprinting & Network Scanning Phases
 
-As part of my cybersecurity training and practical penetration-testing exercises, I completed a reconnaissance and footprinting assessment using **Kali Linux**.
+**W2-PM-FINAL | CYBERSECURITY | NETWORKWALKS**
 
-The assessment focused on gathering publicly observable information from an authorized target and performing network discovery within my authorized local network environment.
+| **Field**                                       | **Details**                                                                                                           |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **Pentester Name (Cybersecurity Professional)** | **Daraobong Ufot**                                                                                                    |
+| **Program/Batch**                               | **Networkwalks Cybersecurity Program**                                                                                |
+| **Date**                                        | **August 2026**                                                                                                       |
+| **Modules completed**                           | **W2-PM1 (Multiple Kali Tools)**<br>**W2-PM5 (Zenmap Scanning)**                                                      |
+| **Client/Target**                               | **1. Networkwalks — authorized target**<br>**2. My own local LAN Network**                                            |
+| **Permission secured from client?**             | **Yes**                                                                                                               |
+| **Phases covered**                              | **Phase 1:** Reconnaissance & Footprinting<br>**Phase 2:** Scanning & Network Discovery<br>**Phase 3–5:** In Progress |
 
-The objective was to understand how security professionals collect information about a target before moving into deeper security assessment activities.
+# 1. Liability Disclaimer
 
----
+I performed these activities only on systems and devices where I had appropriate authorization or on devices and systems that I own myself.
 
-## 🎯 Assessment Scope
+All materials in this project are intended for educational, cybersecurity research, ethical hacking, and professional development purposes only.
 
-| Category            | Details                         |
-| ------------------- | ------------------------------- |
-| 🔎 Primary Focus    | Reconnaissance & Footprinting   |
-| 🐉 Operating System | Kali Linux                      |
-| 🌐 Web Target       | networkwalks.com                |
-| 🖥️ Network Target  | My authorized local LAN         |
-| 🔐 Authorization    | Authorized security testing     |
-| 🧪 Assessment Type  | Educational penetration testing |
+Unauthorized access, scanning, enumeration, exploitation, or interference with computer systems may violate applicable laws and regulations.
 
----
+Do not use the techniques, commands, or information contained in this repository against systems without explicit authorization.
 
-## 🛡️ Authorization & Ethical Use
+The author, instructor, and Networkwalks are not responsible for misuse of the information contained within this project. Every action taken with this knowledge is the responsibility of the individual performing it.
 
-All activities documented in this project were performed within an authorized educational environment and against systems for which appropriate permission was available.
+**Security principle:** Always define and respect the authorized scope before performing reconnaissance or security testing.
 
-This project is intended strictly for cybersecurity education, ethical hacking practice, research, and professional development.
+# 2. Introduction
 
-> ⚠️ Security testing, scanning, enumeration, or exploitation must never be performed against systems without explicit authorization.
+This report covers the footprinting of the `networkwalks.com` domain using multiple Kali Linux tools and the scanning of my own local network using Zenmap.
 
----
+The footprinting activity focused on collecting publicly available information about the authorized target, while the network-scanning activity focused on identifying live hosts and understanding the structure of my authorized local network.
 
-# 🧰 Tools Used
+Together, these activities demonstrate how a cybersecurity professional can progress from gathering publicly available information to mapping hosts within an authorized network environment.
 
-The following tools were used during the reconnaissance and footprinting phase:
+The activities were performed using Kali Linux for reconnaissance and a Windows environment with Zenmap for network discovery.
 
-| Tool              | Purpose                                   |
-| ----------------- | ----------------------------------------- |
-| 🐉 Kali Linux     | Cybersecurity testing environment         |
-| 🔍 WHOIS          | Domain and registration information       |
-| 🌐 WhatWeb        | Web technology fingerprinting             |
-| 📡 Nslookup       | DNS and IP resolution                     |
-| 📥 cURL           | HTTP header inspection                    |
-| 🛡️ Wafw00f       | WAF identification                        |
-| 🗂️ DNSRecon      | DNS enumeration                           |
-| 🛰️ Zenmap / Nmap | Network discovery and host identification |
-| 💻 Windows CMD    | Local network information                 |
+Each activity was documented with the tool or command used, the observed result, the security relevance of the finding, and supporting evidence where available.
 
----
+# 3. Tools Used
 
-# 🔎 Activities Performed
+The table below lists the tools used during the practical activities and their purposes.
 
-## 1. WHOIS Reconnaissance
+| **Tool**          | **Purpose**                                                                |
+| ----------------- | -------------------------------------------------------------------------- |
+| **Kali Linux**    | Security testing and reconnaissance environment                            |
+| **Windows**       | Local network identification and Zenmap environment                        |
+| **WHOIS**         | Collect publicly available domain registration and name-server information |
+| **WhatWeb**       | Fingerprint web technologies and identify CMS information                  |
+| **Nslookup**      | Resolve the domain name to its associated IP address                       |
+| **cURL -I**       | Inspect HTTP response headers                                              |
+| **Wafw00f**       | Identify whether a Web Application Firewall is protecting the website      |
+| **DNSRecon**      | Enumerate publicly accessible DNS information                              |
+| **Zenmap / Nmap** | Discover active hosts within the authorized local network                  |
+| **Windows CMD**   | Identify local IP and network configuration                                |
 
-WHOIS was used to collect publicly available information about the target domain and identify relevant domain infrastructure, including name-server information.
+# 4. Activities Performed
 
-### Security Relevance
+## 4.1 Footprinting & Reconnaissance
 
-WHOIS information can provide an initial understanding of how a domain is registered and what infrastructure may be associated with it.
+I performed authorized reconnaissance against the `networkwalks.com` domain using six Kali Linux tools: **WHOIS, WhatWeb, Nslookup, cURL, Wafw00f, and DNSRecon**.
 
----
+Each tool was used to collect a different type of information about the target.
 
-## 2. WhatWeb Technology Fingerprinting
+First, I used **WHOIS** to obtain publicly available domain registration information and identify relevant domain infrastructure, including name-server information.
 
-WhatWeb was used to identify technologies exposed by the target website.
+I then used **WhatWeb** to identify technologies used by the website. The observed results identified:
 
-The assessment identified technologies including:
+* **WordPress 7.0.4**
+* **WP Download Manager 3.3.58**
 
-* WordPress 7.0.4
-* WP Download Manager 3.3.58
+Technology identification can help security professionals understand what software components may require additional security review.
 
-### Security Relevance
+Using **Nslookup**, I resolved the domain name to its associated IP address.
 
-Technology fingerprinting can help security professionals identify software and components that may require additional security review.
-
-> **Important:** Identifying a technology or version does not automatically mean that a vulnerability exists.
-
----
-
-## 3. DNS & IP Resolution
-
-`nslookup` was used to resolve the target domain and identify its associated IP address.
-
-### Observed Result
+The observed result was:
 
 ```text
 192.232.216.135
 ```
 
-### Security Relevance
-
-IP resolution provides information about the network location associated with a web service and can support further authorized infrastructure analysis.
-
----
-
-## 4. HTTP Header Analysis
-
-cURL was used to inspect the HTTP response headers:
+I then used **cURL** with the `-I` option to inspect the HTTP response headers:
 
 ```bash
 curl -I networkwalks.com
 ```
 
-The response also exposed the following WordPress REST API endpoint:
+The response provided additional information about the web application and exposed the WordPress REST API endpoint:
 
 ```text
 /wp-json/
 ```
 
-### Security Relevance
+Next, I used **Wafw00f** to determine whether a Web Application Firewall was protecting the website.
 
-HTTP response information can assist with technology fingerprinting and further authorized enumeration.
-
----
-
-## 5. Web Application Firewall Detection
-
-Wafw00f was used to determine whether a Web Application Firewall was protecting the target.
-
-### Observed Result
+The observed result identified:
 
 ```text
 ModSecurity (SpiderLabs)
 ```
 
-### Security Relevance
+Finally, I used **DNSRecon** to enumerate publicly accessible DNS information.
 
-Identifying defensive technologies helps security professionals understand the security architecture protecting a web application.
-
----
-
-## 6. DNS Enumeration
-
-DNSRecon was used to enumerate publicly accessible DNS information.
-
-The assessment provided information relating to:
+The results provided information relating to:
 
 * Name servers
 * Mail servers
@@ -146,115 +113,139 @@ The assessment provided information relating to:
 * Service records
 * DNS-related information
 
-### Security Relevance
-
-DNS information can help security professionals build a broader understanding of an organization's publicly exposed infrastructure.
+These activities provided different perspectives of the publicly observable infrastructure associated with the target.
 
 ---
 
-# 🛰️ Network Discovery
+## 4.2 Network Scanning With Zenmap
 
-In addition to web reconnaissance, I performed network discovery within my **authorized local LAN environment**.
+For the second activity, I used **Zenmap** to perform network discovery on my authorized local network.
 
-Zenmap/Nmap was used to identify active hosts and examine available network information such as:
+The objective was to identify my local IP address and subnet, discover active hosts, identify available IP and MAC address information, and examine the network topology.
 
-* IP addresses
-* MAC addresses
-* Active hosts
-* Network topology
+I first used the Windows `ipconfig` command to identify my local IP address and LAN subnet.
 
-This exercise helped me understand how network discovery can be used during the initial stages of an authorized security assessment.
+I then entered my authorized network range into Zenmap and performed host discovery.
 
----
+### My Network Details
 
-# 📊 Risk Analysis
+```text
+Local IP Address: [192.162.1.14]
+Subnet: [255.255.255.0]
+Gateway: [192.168.1.1]
+```
 
-| # | Finding                                | Observation                                  | Potential Impact                      | Risk      |
-| - | -------------------------------------- | -------------------------------------------- | ------------------------------------- | --------- |
-| 1 | Web technology information exposed     | WordPress and WP Download Manager identified | May assist technology fingerprinting  | 🟠 Medium |
-| 2 | Server IP identifiable                 | Domain resolved to `192.232.216.135`         | Provides network-location information | 🟢 Low    |
-| 3 | HTTP technical information exposed     | HTTP headers and `/wp-json/` identified      | May assist further enumeration        | 🟢 Low    |
-| 4 | WAF technology identifiable            | ModSecurity identified                       | Reveals defensive architecture        | 🟢 Low    |
-| 5 | DNS infrastructure information exposed | DNS, mail and service records identified     | May assist infrastructure profiling   | 🟠 Medium |
+### Hosts Identified
 
-### ⚠️ Assessment Note
+```text
+[10.0.0.1]
+[10.0.0.4]
+[10.0.0.19]
+[10.0.0.5]
+```
 
-These observations represent information identified during reconnaissance and network discovery.
+### MAC Addresses
 
-They **do not by themselves confirm vulnerabilities**.
+```text
+[00:1A:2B:3C:4D:5E]
+[00:1A:2B:3C:4D:5E]
+[00:1A:2B:3C:4D:5E]
+[00:1A:2B:3C:4D:5E]
+```
 
-No exploitation or vulnerability validation was performed during these activities.
+After completing the scan, I reviewed the **Topology** section in Zenmap to understand how the identified hosts were connected within the network.
 
----
+> **Note:** The IP addresses, MAC addresses, number of hosts, and topology information above should be replaced with the actual results from my own network scan before final submission.
 
-# 🛡️ Recommendations
+# 5. Risk Analysis / Impact
 
-Based on the observations, the following security recommendations were identified:
+Based on the information collected during the footprinting and network-scanning activities, I identified the following potential security risks.
 
-### 1. Review Publicly Exposed Technology
+| **#** | **Risk / Finding**                           | **Evidence / Observation**                                    | **Potential Impact**                                                                                            | **Risk Level** |
+| ----- | -------------------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------------- |
+| **1** | Web technology information exposed           | WhatWeb identified WordPress and WP Download Manager          | Attackers may use exposed technology/version information to identify software requiring further security review | **🟠 Medium**  |
+| **2** | Server IP address identifiable               | Nslookup resolved the domain to `192.232.216.135`             | Provides information about the network location of the web service                                              | **🟢 Low**     |
+| **3** | HTTP technical information exposed           | cURL returned HTTP response headers and exposed `/wp-json/`   | May assist technology fingerprinting and further enumeration                                                    | **🟢 Low**     |
+| **4** | WAF technology identifiable                  | Wafw00f identified ModSecurity (SpiderLabs)                   | Reveals information about the web application's security architecture                                           | **🟢 Low**     |
+| **5** | DNS infrastructure information exposed       | DNSRecon identified DNS, mail and service-related records     | DNS information can help build a broader infrastructure profile                                                 | **🟠 Medium**  |
+| **6** | Multiple live hosts visible on local network | Zenmap identified active hosts on my authorized local network | Provides visibility into devices present on the network                                                         | **🟠 Medium**  |
 
-Organizations should regularly review publicly exposed CMS platforms, plugins, frameworks, and web technologies.
+### Risk Level Key
+
+* 🔴 **Critical**
+* 🟠 **Medium**
+* 🟢 **Low**
+
+The risks above are observations from the footprinting and scanning exercises, not confirmed vulnerabilities.
+
+The practical activities primarily involved information gathering and host discovery. No exploitation or vulnerability validation was performed during these activities.
+
+Therefore, the presence of information such as a software version, IP address, DNS record, HTTP endpoint, or active host does not by itself prove that a system is vulnerable.
+
+Additional authorized security testing would be required to confirm any suspected vulnerability.
+
+# 6. Recommendations
+
+Based on the observations from these activities, I recommend the following security improvements:
+
+### 1. Review Publicly Exposed Technology Information
+
+Organizations should regularly review what information about their web technologies, CMS platforms, plugins, and frameworks is publicly visible.
 
 ### 2. Keep Software Updated
 
-CMS platforms, plugins, frameworks, and other technologies should be regularly updated and monitored against current security advisories.
+CMS platforms, plugins, frameworks, and other web technologies should be regularly updated and reviewed against current security advisories.
 
 ### 3. Review HTTP Headers
 
 HTTP response headers should be reviewed to determine whether unnecessary technical information is being exposed.
 
-### 4. Review DNS Records
+### 4. Review DNS Records Regularly
 
 DNS records should be periodically reviewed to ensure that only required information and services are publicly exposed.
 
-### 5. Properly Configure the WAF
+### 5. Properly Configure and Monitor the WAF
 
-The Web Application Firewall should remain enabled, properly configured, monitored, and regularly tuned.
+The Web Application Firewall should remain enabled, properly configured, monitored, and regularly tuned according to the organization's security requirements.
 
 ### 6. Perform Regular Internal Network Discovery
 
-Organizations should periodically scan their authorized internal networks to identify active devices and maintain infrastructure visibility.
+Organizations should periodically scan their authorized internal networks to identify active devices and maintain visibility of their infrastructure.
 
----
+### 7. Investigate Unknown Devices
 
-# 📚 Key Learning Outcomes
+Any unexpected device discovered during an authorized network scan should be investigated and verified.
 
-Through this project, I gained practical experience with:
+### 8. Maintain Network Documentation
 
-* 🔎 Reconnaissance methodology
-* 🌐 Domain footprinting
-* 🧩 Web technology fingerprinting
-* 📡 DNS enumeration
-* 🛡️ WAF identification
-* 🛰️ Network discovery
-* 🖥️ Host identification
-* 📝 Professional security documentation
+Network topology and device information should be documented and updated regularly.
 
-One of the most important lessons I learned is that **effective security testing begins with understanding the environment**.
+### 9. Perform Security Testing With Authorization
 
----
+Reconnaissance, scanning, enumeration, and other security-testing activities should only be performed against systems and networks where appropriate authorization has been provided.
 
-# 📈 Assessment Progress
+# 7. Conclusion
 
-```text
-PHASE 1 — RECONNAISSANCE & FOOTPRINTING
+During Week 2 of my cybersecurity training, I completed practical activities covering **footprinting, reconnaissance, and network scanning**.
 
-Reconnaissance       ████████████████████ 100% ✅
-Footprinting         ████████████████████ 100% ✅
-Network Discovery    ████████████████████ 100% ✅
-Host Identification  ████████████████████ 100% ✅
+In the footprinting activity, I used six Kali Linux tools to collect and analyze information about the authorized target.
 
-Exploitation         ⏳ Not Performed
-Vulnerability Test   ⏳ Not Performed
-```
+I learned how:
 
----
+* **WHOIS** can provide domain and infrastructure information.
+* **WhatWeb** can identify web technologies.
+* **Nslookup** can resolve domain names to IP addresses.
+* **cURL** can inspect HTTP response headers.
+* **Wafw00f** can identify Web Application Firewall technology.
+* **DNSRecon** can provide additional DNS information.
 
-# 🧠 What This Project Taught Me
+In the network-scanning activity, I used **Zenmap** to identify my local network configuration and discover active hosts within my authorized network.
 
-This project helped me understand that penetration testing is not simply about running tools or commands.
+I also learned how network scanning can provide information about IP addresses, MAC addresses, active hosts, and network topology.
 
-A professional security assessment requires me to understand:
+The exercises showed me that information gathering is an important part of cybersecurity. Before attempting to exploit a system, a security professional can learn a significant amount about an environment by carefully analyzing publicly available information and network responses.
+
+I also learned that technical findings should be documented clearly. A good cybersecurity report should explain:
 
 ```text
 What was performed
@@ -268,58 +259,55 @@ What risk it may create
 How the risk can be reduced
 ```
 
-I also learned the importance of working within an authorized scope and documenting every stage of a security assessment professionally.
+Most importantly, these exercises reinforced the requirement that reconnaissance and network scanning must always be conducted within an authorized scope.
+
+This project represents another step in my development as a cybersecurity professional and contributes to my practical experience in **ethical hacking, network security, reconnaissance, and security assessment**.
+
+# 8. Evidence Collected
+
+Screenshots collected during the practical activities should be stored in the `screenshots/` folder of this repository.
+
+### Footprinting Evidence
+
+* WHOIS output
+* WhatWeb output
+* Nslookup output
+* cURL output
+* Wafw00f output
+* DNSRecon output
+
+### Network Scanning Evidence
+
+* Windows `ipconfig` output
+* Zenmap scan results
+* Host/IP information
+* MAC address information
+* Network topology
+
+## Suggested Screenshot Structure
+
+```text
+screenshots/
+│
+├── 01-whois.png
+├── 02-whatweb.png
+├── 03-nslookup.png
+├── 04-curl.png
+├── 05-wafw00f.png
+├── 06-dnsrecon.png
+├── 07-ipconfig.png
+├── 08-zenmap-scan.png
+└── 09-zenmap-topology.png
+```
 
 ---
 
-# 🏁 Conclusion
-
-This Week 2 practical exercise strengthened my understanding of **reconnaissance, footprinting, DNS enumeration, web technology identification, WAF detection, and network discovery**.
-
-Using Kali Linux and several security tools, I was able to gather and analyze publicly observable information about an authorized target and perform network discovery within my authorized local environment.
-
-The experience has helped me develop a stronger foundation in ethical hacking and penetration testing while reinforcing the importance of authorization, documentation, and responsible security testing.
-
----
-
-# 📸 Evidence
-
-Screenshots and supporting evidence from the practical exercises are included in this repository.
-
-### Evidence Categories
-
-* WhatWeb Results
-* Nslookup Results
-* cURL Results
-* Wafw00f Results
-* DNSRecon Results
-* WHOIS Results
-* Zenmap/Nmap Network Discovery
-
----
-
-## 🚀 Future Learning
-
-For my next cybersecurity projects, I plan to continue developing my skills in:
-
-* Network security
-* Vulnerability assessment
-* Web application security
-* Penetration testing
-* Security reporting
-* Linux administration
-* Threat detection and analysis
-
----
-
-## 👤 Author
+# 👤 Author
 
 **Daraobong Ufot**
 
 Cybersecurity Learner | Ethical Hacking | Network Security
 
----
+**CYBERSECURITY • ETHICAL HACKING • NETWORK SECURITY**
 
-### 🛡️ CYBERSECURITY • ETHICAL HACKING • NETWORK SECURITY
-
-**Learn → Practice → Analyze → Secure**
+> Learn → Practice → Analyze → Secure
